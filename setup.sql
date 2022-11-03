@@ -20,9 +20,9 @@ foreign key (ESP_ID) references Card(ESP_ID)
 );
 
 create table Measure (
-Date date,
-Value double(20),
+MeasureTime datetime,
+MeasureValue float (20),
 Sensor_ID int (20) not null,
-primary key (Date),
+primary key (MeasureTime),
 foreign key (Sensor_ID) references Sensor(Sensor_ID)
 );
