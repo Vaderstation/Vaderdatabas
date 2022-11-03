@@ -1,21 +1,28 @@
+create table Location (
+Location_ID int (20) not null,
+Display_Name varchar (40),
+primary key (Location_ID)
+);
+
 create table Card (
 ESP_ID int (20) not null,
-primary key (ESP_id)
+Location_ID int(20) not null,
+primary key (ESP_id),
+foreign key (Location_ID) references Location(Location_ID)
 );
 
 create table Sensor (
-Sensor_id int (20) not null,
-Value double (20),
-Date date,
+Sensor_ID int (20) not null,
+Type varchar (20) not null,
 ESP_ID int(20) not null,
 primary key (Sensor_id),
 foreign key (ESP_ID) references Card(ESP_ID)
 );
 
-create table Location (
-Location_ID int (20) not null,
-Display_Name varchar (30),
-ESP_ID int(20) not null,
-primary key (Sensor_id),
-foreign key (ESP_ID) references Card(ESP_ID)
+create table Measure (
+Date date,
+Value double(20),
+Sensor_ID int (20) not null,
+primary key (Date),
+foreign key (Sensor_ID) references Sensor(Sensor_ID)
 );
