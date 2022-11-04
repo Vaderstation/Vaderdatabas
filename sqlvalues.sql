@@ -1,6 +1,8 @@
 SET FOREIGN_KEY_CHECKS = 0;
 
 INSERT INTO Card VALUES (1,1);
+INSERT INTO Card VALUES (2,1);
+INSERT INTO Card VALUES (3,1);
 
 INSERT INTO Location VALUES (1,'Helsingborg');
 
@@ -9,3 +11,4 @@ INSERT INTO Sensor VALUES (1,'Temperatur',1);
 INSERT INTO Measure VALUES(now(),5,1);
 
 SET FOREIGN_KEY_CHECKS = 1;
+

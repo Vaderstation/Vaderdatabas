@@ -2,6 +2,8 @@ package Java;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Database {
@@ -29,13 +31,37 @@ public class Database {
 			return "{}";
 		}
 	
-		public String getSensorID() {
-			return "{}";
+		public ResultSet getSensorID() {
+			String query = "SELECT Sensor_ID FROM Sensor";
+			
+			ResultSet resultSet = null;
+			PreparedStatement statement = null;
+
+			try {
+				statement = conn.prepareStatement(query);
+				resultSet = statement.executeQuery();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return resultSet;
 		}
 	
-		public String getEspID() {
-			return "{}";
+		public ResultSet getEspID() {
+
+			String query = "SELECT ESP_ID FROM Card";
+			
+			ResultSet resultSet = null;
+			PreparedStatement statement = null;
+
+			try {
+				statement = conn.prepareStatement(query);
+				resultSet = statement.executeQuery();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return resultSet;
 		}
+
 	
 		public String getLocationID() {
 			return "{}";
