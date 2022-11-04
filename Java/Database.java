@@ -23,12 +23,36 @@ public class Database {
 			}
 		}
 
-		public String getMeasureValue() {
-			return "{}";
+		// Hämtar MeasureValue från databasen
+		public ResultSet getMeasureValue() {
+			String query = "SELECT MeasureValue FROM Measure";
+			
+			ResultSet resultSet = null;
+			PreparedStatement statement = null;
+
+			try {
+				statement = conn.prepareStatement(query);
+				resultSet = statement.executeQuery();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return resultSet;
 		}
-	
-		public String getMeasureTime() {
-			return "{}";
+
+		// Hämtar MeasureTime från databasen
+		public ResultSet getMeasureTime() {
+			String query = "SELECT MeasureTime FROM Measure";
+			
+			ResultSet resultSet = null;
+			PreparedStatement statement = null;
+
+			try {
+				statement = conn.prepareStatement(query);
+				resultSet = statement.executeQuery();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return resultSet;
 		}
 
 
@@ -66,12 +90,34 @@ public class Database {
 		}
 
 	
-		public String getLocationID() {
-			return "{}";
+		public ResultSet getLocationID() {
+			String query = "SELECT Location_ID FROM Location";
+			
+			ResultSet resultSet = null;
+			PreparedStatement statement = null;
+
+			try {
+				statement = conn.prepareStatement(query);
+				resultSet = statement.executeQuery();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return resultSet;
 		}
 	
-		public String displayName() {
-			return "{}";
+		public ResultSet displayName() {
+			String query = "SELECT Display_Name FROM Location";
+			
+			ResultSet resultSet = null;
+			PreparedStatement statement = null;
+
+			try {
+				statement = conn.prepareStatement(query);
+				resultSet = statement.executeQuery();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return resultSet;
 		}
 
 	
