@@ -30,7 +30,9 @@ public class Database {
 		public String getMeasureTime() {
 			return "{}";
 		}
-	
+
+
+		// Hämtar Sensor_ID från databasen
 		public ResultSet getSensorID() {
 			String query = "SELECT Sensor_ID FROM Sensor";
 			
@@ -45,7 +47,8 @@ public class Database {
 			}
 			return resultSet;
 		}
-	
+		
+		// Hämtar ESP_ID från databasen
 		public ResultSet getEspID() {
 
 			String query = "SELECT ESP_ID FROM Card";

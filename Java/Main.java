@@ -5,9 +5,6 @@ import java.sql.SQLException;
 
 public class Main {
 
-
-
-
     public static void main(String[] args) {
  
         Database db = new Database();
@@ -15,9 +12,12 @@ public class Main {
 
         System.out.println("Vadeer vaader VAADER");
 
+
+
+        //Test att skriva ut värdena från databasen med metoderna i terminalen
+        
         ResultSet rs1 = db.getEspID();
         ResultSet rs2 = db.getSensorID();
-   
         try{
 
             while(rs2.next()){
