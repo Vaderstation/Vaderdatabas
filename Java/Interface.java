@@ -2,15 +2,32 @@ package Java;
 
 import java.awt.*;
 import javax.swing.*;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
 import java.awt.event.*; 
 
 public class Interface {
 
+
+    public Interface(Map map) {
+        SwingUtilities.invokeLater(() -> createWindow(map));
+    }
+
     JButton b1, b2, b3;
 
 
-    public void createWindow(){
+    public void createWindow(Map map){
+
+        List<Map.Entry<String, Integer>> wordList = new ArrayList<>(map.entrySet());
+
+        SortedListModel listModel = new SortedListModel(wordList);
+        JList<SortedListModel> myList = new JList<SortedListModel>(listModel);
+
+
+
 
         JFrame frame = new JFrame("VÄDERSTATION");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -39,9 +56,7 @@ public class Interface {
         group.add(b1);
         group.add(b2);
         group.add(b3);
-
-
-        
+    
         panel.add(b1);
         panel.add(b2);
         panel.add(b3);
