@@ -35,5 +35,14 @@ public class Main {
         } catch(SQLException e){
             e.printStackTrace();
         }
+
+        
+        Interface interFace = new Interface();
+        interFace.createWindow();
+
+
+
+
+
     }
 }
