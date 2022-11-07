@@ -1,3 +1,4 @@
+
 SET FOREIGN_KEY_CHECKS = 0;
 
 TRUNCATE table Card;
@@ -14,6 +15,8 @@ INSERT INTO Location VALUES (2,'Malmö');
 INSERT INTO Location VALUES (3,'Kiruna');
 
 INSERT INTO Sensor VALUES (1,'Temperatur',1);
+INSERT INTO Sensor VALUES (2,'Vind',1);
+INSERT INTO Sensor VALUES (3,'Fuktighet',1);
 
 INSERT INTO Measure VALUES('2022-11-07 10:05:50',5,1);
 INSERT INTO Measure VALUES('2022-11-07 10:21:50',3,1);
@@ -22,6 +25,3 @@ INSERT INTO Measure VALUES('2022-11-07 10:50:50',1,1);
 INSERT INTO Measure VALUES('2022-11-07 10:55:50',6,1);
 
 SET FOREIGN_KEY_CHECKS = 1;
-
-
-
