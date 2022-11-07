@@ -24,14 +24,14 @@ public class Database {
 		}
 
 		// Hämtar MeasureValue från databasen
-		public ResultSet getMeasureValue() {
-			String query = "SELECT MeasureValue FROM Measure";
-			
+		public ResultSet getMeasureValue(int ESP_ID, int Sensor_ID) {
 			ResultSet resultSet = null;
+			String query = "SELECT MeasureTime,MeasureValue FROM Measure,Sensor,Card WHERE Sensor.ESP_ID = Card.ESP_ID AND Sensor.ESP_ID = ? AND Measure.Sensor_ID=Sensor.sensor_ID AND Measure.Sensor_ID = ? ";
 			PreparedStatement statement = null;
-
 			try {
 				statement = conn.prepareStatement(query);
+				statement.setInt(1, ESP_ID);
+				statement.setInt(2, Sensor_ID);
 				resultSet = statement.executeQuery();
 			} catch (SQLException e) {
 				e.printStackTrace();
