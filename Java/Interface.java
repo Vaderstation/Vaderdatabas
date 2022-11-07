@@ -19,34 +19,18 @@ public class Interface {
     JButton b1, b2, b3;
 
 
-<<<<<<< HEAD
-    public void createWindow(Map map){
-
-        List<Map.Entry<String, Integer>> wordList = new ArrayList<>(map.entrySet());
-
-        SortedListModel listModel = new SortedListModel(wordList);
-        JList<SortedListModel> myList = new JList<SortedListModel>(listModel);
-
-
-
-
-        JScrollPane scrollPane = new JScrollPane(myList, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
-        JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        scrollPane.setPreferredSize(new Dimension(600, 400));
-
-=======
     public void createWindow(Map<String, Integer> map){
 
         List<Map.Entry<String, Integer>> wordList = new ArrayList<Map.Entry<String, Integer>>(map.entrySet());
         SortedListModel<Map.Entry<String, Integer>> listModel = new SortedListModel<Map.Entry<String, Integer>>(wordList);
         JList<Map.Entry<String, Integer>> jlist = new JList<Map.Entry<String, Integer>>(listModel);
         JScrollPane scrollpane = new JScrollPane(jlist);
+
         scrollpane.setBackground(Color.BLUE);
         scrollpane.getVerticalScrollBar().setPreferredSize(new Dimension(30, 0));
         scrollpane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         scrollpane.setBorder(BorderFactory.createCompoundBorder(scrollpane.getBorder(), BorderFactory.createEmptyBorder(0, 10, 0, 0)));
         
->>>>>>> a5630154bf56da6f840f23d6844105827a593889
         JFrame frame = new JFrame("VÄDERSTATION");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Container pane = frame.getContentPane();
@@ -56,13 +40,9 @@ public class Interface {
         JButton Exit = new JButton("Exit");
         Exit.setPreferredSize(new Dimension(50, 50));
 
-
-
-
-
         b1 = new JButton("ESP_1");
         b1.setPreferredSize(new Dimension(200, 100));
-        b1.setSelected(true);
+       
 
         b2 = new JButton("ESP_2");
         b2.setPreferredSize(new Dimension(200, 100));
@@ -80,8 +60,43 @@ public class Interface {
         panel.add(b3);
         panel.add(Exit);
 
+        panel.setBackground(Color.YELLOW);
+
+        b1.addActionListener( (n) -> { 
+            b1.setSelected(true);
+            b1.setText("ESP_1 (SELECTED)");
+
+            b2.setSelected(false);
+            b2.setText("ESP_2");
+            
+            b3.setSelected(false);  
+            b3.setText("ESP_3");
+        });
+
+        b2.addActionListener( (n) -> { 
+            b2.setSelected(true);
+            b2.setText("ESP_2 (SELECTED)");
+
+            b1.setSelected(false);
+            b1.setText("ESP_1");
+
+            b3.setSelected(false);
+            b3.setText("ESP_3");
+        });
+ 
+        b3.addActionListener( (n) -> { 
+            b3.setSelected(true);
+            b3.setText("ESP_3 (SELECTED)");
+
+            b1.setSelected(false);
+            b1.setText("ESP_1");
+
+            b2.setSelected(false);
+            b2.setText("ESP_2");  
+        });
+
         pane.add(panel, BorderLayout.SOUTH);
-        pane.add(scrollPane, BorderLayout.NORTH);
+        pane.add(scrollpane, BorderLayout.NORTH);
 
         Exit.addActionListener((n) -> { System.exit(0); });
 
@@ -89,6 +104,8 @@ public class Interface {
         frame.setVisible(true);
         
     }
+
+
 
 
 
