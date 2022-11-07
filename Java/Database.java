@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 public class Database {
     private static final String jdbcUsername = "hbg13";
-	private static final String jdbcPassword = "pjd666zk";	
+	private static final String jdbcPassword = "";	
 	private static final String jdbcString = "jdbc:mysql://puccini.cs.lth.se/hbg13";
 	
 	private Connection conn = null;
