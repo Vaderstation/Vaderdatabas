@@ -5,6 +5,11 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.TreeMap;
+
+import com.mysql.cj.protocol.Resultset;
 
 public class Database {
     private static final String jdbcUsername = "hbg13";
@@ -21,6 +26,19 @@ public class Database {
 				System.err.println(e);
 				e.printStackTrace();
 			}
+		}
+
+		//string,int resultset to map
+		public Map<String,Integer> resultSetToMap (ResultSet rs){
+			Map<String,Integer> dataSet = new TreeMap<>();
+			try {
+				while(rs.next()){
+					dataSet.put(rs.getString(1),rs.getInt(2));
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return dataSet;
 		}
 
 		// Hämtar MeasureValue från databasen
