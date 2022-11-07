@@ -74,7 +74,7 @@ public class Database {
 		}
 
 
-		// Hämtar Sensor_ID från databasen
+		// Hämtar alla Sensor_ID från en specifik ESP_ID
 		public ResultSet getSensorID(int ESP_ID) {
 			String query = "SELECT Sensor_ID FROM Card, Sensor WHERE Sensor.ESP_ID = Card.ESP_ID AND Card.ESP_ID = ? ";
 			ResultSet resultSet = null;
@@ -112,7 +112,7 @@ public class Database {
 		}
 
 		// Hämtar Location_ID från databasen
-		public ResultSet getLocationID() {
+		public ResultSet getLocationnName() {
 			String query = "SELECT Location_ID FROM Location";
 			
 			ResultSet resultSet = null;
