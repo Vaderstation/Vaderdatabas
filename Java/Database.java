@@ -57,21 +57,22 @@ public class Database {
 
 
 		// Hämtar Sensor_ID från databasen
-		public ResultSet getSensorID(int ESP_ID, int Sensor_ID) {
-			String query = "SELECT Sensor_ID ";
+		public ResultSet getSensorID(int ESP_ID) {
+			String query = "SELECT Sensor_ID FROM Card, Sensor WHERE Sensor.ESP_ID = Card.ESP_ID AND Card.ESP_ID = ? ";
 			ResultSet resultSet = null;
-			
+			PreparedStatement statement = null;
 
-			try (PreparedStatement statement = conn.prepareStatement(query) ){
+			try {
+				statement = conn.prepareStatement(query);
 				statement.setInt(1, ESP_ID);
-				statement.setInt(1, Sensor_ID);
 				resultSet = statement.executeQuery();
-				return resultSet;
+
 
 			} catch (SQLException e) {
 				e.printStackTrace();
-				return null;
+
 			}
+			return resultSet;
 
 		}
 		
