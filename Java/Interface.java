@@ -19,21 +19,22 @@ public class Interface {
     JButton b1, b2, b3;
 
 
-    public void createWindow(Map map){
+    public void createWindow(Map<String, Integer> map){
 
-        List<Map.Entry<String, Integer>> wordList = new ArrayList<>(map.entrySet());
-
-        SortedListModel listModel = new SortedListModel(wordList);
-        JList<SortedListModel> myList = new JList<SortedListModel>(listModel);
-
-
-
-
+        List<Map.Entry<String, Integer>> wordList = new ArrayList<Map.Entry<String, Integer>>(map.entrySet());
+        SortedListModel<Map.Entry<String, Integer>> listModel = new SortedListModel<Map.Entry<String, Integer>>(wordList);
+        JList<Map.Entry<String, Integer>> jlist = new JList<Map.Entry<String, Integer>>(listModel);
+        JScrollPane scrollpane = new JScrollPane(jlist);
+        scrollpane.setBackground(Color.BLUE);
+        scrollpane.getVerticalScrollBar().setPreferredSize(new Dimension(30, 0));
+        scrollpane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollpane.setBorder(BorderFactory.createCompoundBorder(scrollpane.getBorder(), BorderFactory.createEmptyBorder(0, 10, 0, 0)));
+        
         JFrame frame = new JFrame("VÄDERSTATION");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Container pane = frame.getContentPane();
         frame.setPreferredSize(new Dimension(700, 600));
-
+        pane.add(scrollpane, BorderLayout.CENTER);
         JPanel panel = new JPanel();
         JButton Exit = new JButton("Exit");
         Exit.setPreferredSize(new Dimension(50, 50));
