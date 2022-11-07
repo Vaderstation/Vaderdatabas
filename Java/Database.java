@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 public class Database {
     private static final String jdbcUsername = "hbg13";
-	private static final String jdbcPassword = "";	
+	private static final String jdbcPassword = "pjd666zk";	
 	private static final String jdbcString = "jdbc:mysql://puccini.cs.lth.se/hbg13";
 	
 	private Connection conn = null;
@@ -57,19 +57,22 @@ public class Database {
 
 
 		// Hämtar Sensor_ID från databasen
-		public ResultSet getSensorID() {
-			String query = "SELECT Sensor_ID FROM Sensor";
-			
+		public ResultSet getSensorID(int ESP_ID, int Sensor_ID) {
+			String query = "SELECT Sensor_ID ";
 			ResultSet resultSet = null;
-			PreparedStatement statement = null;
+			
 
-			try {
-				statement = conn.prepareStatement(query);
+			try (PreparedStatement statement = conn.prepareStatement(query) ){
+				statement.setInt(1, ESP_ID);
+				statement.setInt(1, Sensor_ID);
 				resultSet = statement.executeQuery();
+				return resultSet;
+
 			} catch (SQLException e) {
 				e.printStackTrace();
+				return null;
 			}
-			return resultSet;
+
 		}
 		
 		// Hämtar ESP_ID från databasen
