@@ -15,7 +15,7 @@ public class Main {
 
 
         //Test att skriva ut värdena från databasen med metoderna i terminalen
-        
+
         ResultSet rs1 = db.getEspID();
         ResultSet rs2 = db.getSensorID();
         try{
@@ -27,7 +27,9 @@ public class Main {
 
             while(rs1.next()){
                 String a = rs1.getString(1);
+                String b = rs1.getString(2);
                 System.out.println("ESP_ID = " + a);
+                System.out.println("Location = " + b);
             }
         } catch(SQLException e){
             e.printStackTrace();

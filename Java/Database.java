@@ -75,7 +75,7 @@ public class Database {
 		// Hämtar ESP_ID från databasen
 		public ResultSet getEspID() {
 
-			String query = "SELECT ESP_ID FROM Card";
+			String query = "SELECT * FROM Card";
 			
 			ResultSet resultSet = null;
 			PreparedStatement statement = null;
@@ -89,7 +89,7 @@ public class Database {
 			return resultSet;
 		}
 
-	
+		// Hämtar Location_ID från databasen
 		public ResultSet getLocationID() {
 			String query = "SELECT Location_ID FROM Location";
 			
@@ -104,7 +104,8 @@ public class Database {
 			}
 			return resultSet;
 		}
-	
+		
+		// Hämtar displayName från databasen
 		public ResultSet displayName() {
 			String query = "SELECT Display_Name FROM Location";
 			
