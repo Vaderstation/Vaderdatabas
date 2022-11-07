@@ -29,6 +29,10 @@ public class Interface {
 
 
 
+        JScrollPane scrollPane = new JScrollPane(myList, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
+        JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollPane.setPreferredSize(new Dimension(600, 400));
+
         JFrame frame = new JFrame("VÄDERSTATION");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Container pane = frame.getContentPane();
@@ -38,7 +42,7 @@ public class Interface {
         JButton Exit = new JButton("Exit");
         Exit.setPreferredSize(new Dimension(50, 50));
 
-        pane.add(panel, BorderLayout.SOUTH);
+
 
 
 
@@ -61,6 +65,9 @@ public class Interface {
         panel.add(b2);
         panel.add(b3);
         panel.add(Exit);
+
+        pane.add(panel, BorderLayout.SOUTH);
+        pane.add(scrollPane, BorderLayout.NORTH);
 
         Exit.addActionListener((n) -> { System.exit(0); });
 
