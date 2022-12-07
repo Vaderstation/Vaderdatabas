@@ -28,6 +28,7 @@ public class View {
     private static JLabel mT;
     private static JLabel mH;
     private static JLabel mG;
+    private static SortedListModel<Map.Entry<String, Integer>> listModel;
     private static JScrollPane scrollpane;
     public View(Map map){
         SwingUtilities.invokeLater(() -> createWindow(map));
@@ -36,9 +37,11 @@ public class View {
     public void createWindow(Map<String, Integer> map){
         Map<String, Integer> dataSet = Main.db.resultSetToMap(Main.db.getMeasureValue(1, 1));
         List<Map.Entry<String, Integer>> wordList = new ArrayList<Map.Entry<String, Integer>>(dataSet.entrySet());
-        SortedListModel<Map.Entry<String, Integer>> listModel = new SortedListModel<Map.Entry<String, Integer>>(wordList);
+        listModel = new SortedListModel<Map.Entry<String, Integer>>(wordList);
         JList<Map.Entry<String, Integer>> jlist = new JList<Map.Entry<String, Integer>>(listModel);
         View.scrollpane = new JScrollPane(jlist);
+
+        
 
         JFrame frame = new JFrame();
 
@@ -53,13 +56,13 @@ public class View {
         JPanel panel4 = new JPanel();
         JPanel panel5 = new JPanel();
 
-        panel1.setBackground(Color.red);
+        panel1.setBackground(Color.GRAY);
         panel1.setLayout(new FlowLayout());
-        panel2.setBackground(Color.green);
-        panel3.setBackground(Color.yellow);
+        panel2.setBackground(Color.lightGray); //knappar
+        panel3.setBackground(Color.white); //Scrollpane
         panel3.setLayout(new FlowLayout());
-        panel4.setBackground(Color.magenta);
-        panel5.setBackground(Color.blue);
+        panel4.setBackground(Color.GRAY);
+        panel5.setBackground(Color.white); //Measure
 
         panel1.setPreferredSize(new Dimension(840,120));
         panel2.setPreferredSize(new Dimension(220,100));
@@ -84,7 +87,7 @@ public class View {
 
         b3 = new JButton("ESP_3");
         b3.setPreferredSize(new Dimension(220, 100));
-
+        
         panel2.add(b1);
         panel2.add(b2);
         panel2.add(b3);
@@ -101,22 +104,26 @@ public class View {
         Measure esp2 = new Measure();
         Measure esp3 = new Measure();
 
-        //esp measurements setup
+        //esp measurements setup and label for panel 3
                  mT = new JLabel("Null");
                  mH = new JLabel("Null");
                  mG = new JLabel("null");
+                 JLabel lV = new JLabel("Live values: ");
 
                 mT.setPreferredSize(new Dimension(420,100));
                 mH.setPreferredSize(new Dimension(420,100));
                 mG.setPreferredSize(new Dimension(420,100));
+                lV.setPreferredSize(new Dimension(420,100));
 
                 mT.setFont(new Font("Verdana", Font.PLAIN, 18));
                 mH.setFont(new Font("Verdana", Font.PLAIN, 18));
                 mG.setFont(new Font("Verdana", Font.PLAIN, 18));
+                lV.setFont(new Font("Verdana", Font.PLAIN, 24));
 
                 panel5.add(mT);
                 panel5.add(mH);
                 panel5.add(mG);
+                panel3.add(lV);
 
         //Live values setup
 
@@ -132,11 +139,9 @@ public class View {
                 mH.setText("Mean Humidity: " + String.valueOf(esp1.getMeanHumidity(90, 23)));
                 mG.setText("Mean Gas: " + String.valueOf(esp1.getMeanGas(23, 2)));
 
-                Map<String, Integer> dataSet = Main.db.resultSetToMap(Main.db.getMeasureValue(2, 2));
+                Map<String, Integer> dataSet = Main.db.resultSetToMap(Main.db.getMeasureValue(1, 1));
                 List<Map.Entry<String, Integer>> wordList = new ArrayList<Map.Entry<String, Integer>>(dataSet.entrySet());
-                SortedListModel<Map.Entry<String, Integer>> listModel = new SortedListModel<Map.Entry<String, Integer>>(wordList);
-                JList<Map.Entry<String, Integer>> jlist = new JList<Map.Entry<String, Integer>>(listModel);
-                View.scrollpane = new JScrollPane(jlist);
+                View.listModel.updateAA(wordList);
                 View.scrollpane.revalidate();
                 View.scrollpane.repaint();
                 
@@ -150,6 +155,12 @@ public class View {
                 mT.setText("Mean Temprature: " + String.valueOf(esp2.getMeanTemp(343, 10)));
                 mH.setText("Mean Humidity: " + String.valueOf(esp2.getMeanHumidity(920, 23)));
                 mG.setText("Mean Gas: " + String.valueOf(esp2.getMeanGas(43, 2)));
+
+                Map<String, Integer> dataSet = Main.db.resultSetToMap(Main.db.getMeasureValue(2, 2));
+                List<Map.Entry<String, Integer>> wordList = new ArrayList<Map.Entry<String, Integer>>(dataSet.entrySet());
+                View.listModel.updateAA(wordList);
+                View.scrollpane.revalidate();
+                View.scrollpane.repaint();
                 
             }
         });
@@ -161,6 +172,11 @@ public class View {
                 mH.setText("Mean Humidity: " + String.valueOf(esp3.getMeanHumidity(910, 23)));
                 mG.setText("Mean Gas: " + String.valueOf(esp3.getMeanGas(213, 2)));
                 
+                Map<String, Integer> dataSet = Main.db.resultSetToMap(Main.db.getMeasureValue(3, 3));
+                List<Map.Entry<String, Integer>> wordList = new ArrayList<Map.Entry<String, Integer>>(dataSet.entrySet());
+                View.listModel.updateAA(wordList);
+                View.scrollpane.revalidate();
+                View.scrollpane.repaint();
             }
         });
 
