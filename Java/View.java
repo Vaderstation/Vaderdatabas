@@ -157,9 +157,9 @@ public class View {
         b1.addActionListener((ActionListener) new ActionListener(){ //SÄTT IN VÄRDEN FRÅN DATABAS. 
             @Override
             public void actionPerformed(ActionEvent e) {
-                mT.setText("Mean Temprature: " + String.valueOf(esp1.getMeanTemp(34, 10)));
-                mH.setText("Mean Humidity: " + String.valueOf(esp1.getMeanHumidity(90, 23)));
-                mG.setText("Mean Gas: " + String.valueOf(esp1.getMeanGas(23, 2)));
+                mT.setText("Mean Temprature: " + Main.db.resultSetToDouble(Main.db.getMeanTemp(1)));
+                mH.setText("Mean Humidity: " + Main.db.resultSetToDouble(Main.db.getMeanHumidity(1)));
+                mG.setText("Mean Gas: " + Main.db.resultSetToDouble(Main.db.getMeanGas(1)));
 
                 Map<String, Integer> dataSet = Main.db.resultSetToMap(Main.db.getMeasureValue(1, 1));
                 List<Map.Entry<String, Integer>> wordList = new ArrayList<Map.Entry<String, Integer>>(dataSet.entrySet());
@@ -185,9 +185,9 @@ public class View {
         b2.addActionListener((ActionListener) new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                mT.setText("Mean Temprature: " + String.valueOf(esp2.getMeanTemp(343, 10)));
-                mH.setText("Mean Humidity: " + String.valueOf(esp2.getMeanHumidity(920, 23)));
-                mG.setText("Mean Gas: " + String.valueOf(esp2.getMeanGas(43, 2)));
+                mT.setText("Mean Temprature: " + Main.db.resultSetToDouble(Main.db.getMeanTemp(1)));
+                mH.setText("Mean Humidity: " + Main.db.resultSetToDouble(Main.db.getMeanHumidity(1)));
+                mG.setText("Mean Gas: " + Main.db.resultSetToDouble(Main.db.getMeanGas(1)));
 
                 Map<String, Integer> dataSet = Main.db.resultSetToMap(Main.db.getMeasureValue(2, 2));
                 List<Map.Entry<String, Integer>> wordList = new ArrayList<Map.Entry<String, Integer>>(dataSet.entrySet());
@@ -211,9 +211,9 @@ public class View {
         b3.addActionListener((ActionListener) new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                mT.setText("Mean Temprature: " + String.valueOf(esp3.getMeanTemp(342, 10)));
-                mH.setText("Mean Humidity: " + String.valueOf(esp3.getMeanHumidity(910, 23)));
-                mG.setText("Mean Gas: " + String.valueOf(esp3.getMeanGas(213, 2)));
+                mT.setText("Mean Temprature: " + Main.db.resultSetToDouble(Main.db.getMeanTemp(1)));
+                mH.setText("Mean Humidity: " + Main.db.resultSetToDouble(Main.db.getMeanHumidity(1)));
+                mG.setText("Mean Gas: " + Main.db.resultSetToDouble(Main.db.getMeanGas(1)));
                 
                 Map<String, Integer> dataSet = Main.db.resultSetToMap(Main.db.getMeasureValue(3, 3));
                 List<Map.Entry<String, Integer>> wordList = new ArrayList<Map.Entry<String, Integer>>(dataSet.entrySet());
@@ -241,8 +241,8 @@ public class View {
                 if(View.clickedId == 1){
                     System.out.println("Uppdaterar ESP_1");
                         mT.setText("Mean Temprature: " + Main.db.resultSetToDouble(Main.db.getMeanTemp(1)));
-                        mH.setText("Mean Humidity: " + String.valueOf(esp1.getMeanHumidity(910, 23)));
-                        mG.setText("Mean Gas: " + String.valueOf(esp1.getMeanGas(23, 2)));
+                        mH.setText("Mean Humidity: " + Main.db.resultSetToDouble(Main.db.getMeanHumidity(1)));
+                        mG.setText("Mean Gas: " + Main.db.resultSetToDouble(Main.db.getMeanGas(1)));
 
                         Map<String, Integer> dataSet = Main.db.resultSetToMap(Main.db.getMeasureValue(1, 1));
                         List<Map.Entry<String, Integer>> wordList = new ArrayList<Map.Entry<String, Integer>>(dataSet.entrySet());
@@ -253,9 +253,9 @@ public class View {
             
                 if(View.clickedId == 2){
                     System.out.println("Uppdaterar ESP_2");
-                        mT.setText("Mean Temprature: " + String.valueOf(esp2.getMeanTemp(3423, 10)));
-                        mH.setText("Mean Humidity: " + String.valueOf(esp2.getMeanHumidity(920, 23)));
-                        mG.setText("Mean Gas: " + String.valueOf(esp2.getMeanGas(43, 2)));
+                        mT.setText("Mean Temprature: " + Main.db.resultSetToDouble(Main.db.getMeanTemp(2)));
+                        mH.setText("Mean Humidity: " + Main.db.resultSetToDouble(Main.db.getMeanHumidity(2)));
+                        mG.setText("Mean Gas: " + Main.db.resultSetToDouble(Main.db.getMeanGas(2)));
     
                         Map<String, Integer> dataSet = Main.db.resultSetToMap(Main.db.getMeasureValue(2, 2));
                         List<Map.Entry<String, Integer>> wordList = new ArrayList<Map.Entry<String, Integer>>(dataSet.entrySet());
@@ -266,9 +266,9 @@ public class View {
 
                 if(View.clickedId == 3){
                     System.out.println("Uppdaterar ESP_3");
-                        mT.setText("Mean Temprature: " + String.valueOf(esp3.getMeanTemp(342, 10)));
-                        mH.setText("Mean Humidity: " + String.valueOf(esp3.getMeanHumidity(9210, 23)));
-                        mG.setText("Mean Gas: " + String.valueOf(esp3.getMeanGas(213, 2)));
+                        mT.setText("Mean Temprature: " + Main.db.resultSetToDouble(Main.db.getMeanTemp(3)));
+                        mH.setText("Mean Humidity: " + Main.db.resultSetToDouble(Main.db.getMeanHumidity(3)));
+                        mG.setText("Mean Gas: " + Main.db.resultSetToDouble(Main.db.getMeanGas(3)));
                 
                         Map<String, Integer> dataSet = Main.db.resultSetToMap(Main.db.getMeasureValue(3, 3));
                         List<Map.Entry<String, Integer>> wordList = new ArrayList<Map.Entry<String, Integer>>(dataSet.entrySet());

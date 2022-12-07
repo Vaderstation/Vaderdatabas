@@ -1,1 +1,1 @@
-SELECT AVG(MeasureValue) FROM Measure,Sensor,Card WHERE Sensor.ESP_ID = Card.ESP_ID AND Sensor.ESP_ID = 1 AND Measure.Sensor_ID=Sensor.sensor_ID AND Measure.Sensor_ID = 1 ORDER BY MeasureTime DESC LIMIT 5; 
+SELECT MeasureValue FROM Measure,Sensor,Card WHERE Sensor.ESP_ID = Card.ESP_ID AND Sensor.ESP_ID = 1 AND Measure.Sensor_ID=Sensor.sensor_ID AND Measure.Sensor_ID = 1 ORDER BY MeasureTime DESC LIMIT 5; 

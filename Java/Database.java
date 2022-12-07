@@ -145,13 +145,14 @@ public class Database {
 		//KOLLA ÖVER DESSA METODER!!!
 		public ResultSet getMeanTemp(int ESP_ID) {
 			ResultSet resultSet = null;
-			String query = "SELECT AVG(MeasureValue) FROM Measure,Sensor,Card WHERE Sensor.ESP_ID = Card.ESP_ID AND Sensor.ESP_ID = 1 AND Measure.Sensor_ID=Sensor.sensor_ID AND Measure.Sensor_ID = 1 ORDER BY MeasureTime DESC LIMIT 5; ";
+			String query = "SELECT AVG(MeasureValue) FROM Measure,Sensor,Card WHERE Sensor.ESP_ID = Card.ESP_ID AND Sensor.ESP_ID = ? AND Measure.Sensor_ID=Sensor.sensor_ID AND Measure.Sensor_ID = ? ORDER BY MeasureTime DESC LIMIT 5; ";
 			PreparedStatement statement = null;
 			try {
 				statement = conn.prepareStatement(query);
 				statement.setInt(1, ESP_ID);
 				statement.setInt(2, 1);
 				resultSet = statement.executeQuery();
+				
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -191,6 +192,7 @@ public class Database {
 		public double resultSetToDouble (ResultSet rs){
 			double dataSet = 0;
 			try {
+					rs.next();
 					dataSet = rs.getDouble(1);
 				
 			} catch (SQLException e) {
