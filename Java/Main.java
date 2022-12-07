@@ -18,9 +18,5 @@ public class Main {
         Map<String, Integer> dataSet = db.resultSetToMap(db.getMeasureValue(1, 1));
 
         Interface interFace = new Interface(dataSet);
-
-
-
-
     }
 }
