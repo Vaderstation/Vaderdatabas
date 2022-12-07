@@ -9,11 +9,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
-import com.mysql.cj.protocol.Resultset;
+//import com.mysql.cj.protocol.Resultset;
 
 public class Database {
     private static final String jdbcUsername = "hbg13";
-	private static final String jdbcPassword = "";	
+	private static final String jdbcPassword = "pjd666zk";	
 	private static final String jdbcString = "jdbc:mysql://puccini.cs.lth.se/hbg13";
 	
 	private Connection conn = null;
