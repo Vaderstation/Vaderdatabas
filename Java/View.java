@@ -41,7 +41,7 @@ public class View {
         JList<Map.Entry<String, Integer>> jlist = new JList<Map.Entry<String, Integer>>(listModel);
         View.scrollpane = new JScrollPane(jlist);
 
-        
+
 
         JFrame frame = new JFrame();
 
@@ -132,7 +132,7 @@ public class View {
         View.scrollpane.setMaximumSize(new Dimension(420,100));
         panel3.add(View.scrollpane);
 
-        b1.addActionListener((ActionListener) new ActionListener(){
+        b1.addActionListener((ActionListener) new ActionListener(){ //SÄTT IN VÄRDEN FRÅN DATABAS. 
             @Override
             public void actionPerformed(ActionEvent e) {
                 mT.setText("Mean Temprature: " + String.valueOf(esp1.getMeanTemp(34, 10)));
