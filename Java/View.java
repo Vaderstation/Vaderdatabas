@@ -23,11 +23,26 @@ import javax.swing.SwingUtilities;
 
 public class View {
 
-    JButton b1, b2, b3;
+    JButton b1, b2, b3, b4;
 
     private static JLabel mT;
     private static JLabel mH;
     private static JLabel mG;
+
+    private static double esp1MT;
+    private static double esp2MT;
+    private static double esp3MT;
+
+    private static double esp1MH;
+    private static double esp2MH;
+    private static double esp3MH;
+
+    private static double esp1MG;
+    private static double esp2MG;
+    private static double esp3MG;
+
+    private static int clickedId;
+
     private static SortedListModel<Map.Entry<String, Integer>> listModel;
     private static JScrollPane scrollpane;
     public View(Map map){
@@ -87,10 +102,14 @@ public class View {
 
         b3 = new JButton("ESP_3");
         b3.setPreferredSize(new Dimension(220, 100));
+
+        b4 = new JButton("Update");
+        b4.setPreferredSize(new Dimension(220, 100));
         
         panel2.add(b1);
         panel2.add(b2);
         panel2.add(b3);
+        panel2.add(b4);
 
         //Rubrik
         JLabel t1 = new JLabel("Väderstation_v1");
@@ -132,6 +151,9 @@ public class View {
         View.scrollpane.setMaximumSize(new Dimension(420,100));
         panel3.add(View.scrollpane);
 
+        //update
+
+        //esp1
         b1.addActionListener((ActionListener) new ActionListener(){ //SÄTT IN VÄRDEN FRÅN DATABAS. 
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -144,6 +166,17 @@ public class View {
                 View.listModel.updateAA(wordList);
                 View.scrollpane.revalidate();
                 View.scrollpane.repaint();
+
+                b1.setSelected(true);
+                b1.setText("ESP_1 (SELECTED)");
+    
+                b2.setSelected(false);
+                b2.setText("ESP_2");
+                
+                b3.setSelected(false);  
+                b3.setText("ESP_3");
+
+                View.clickedId = 1; 
                 
             }
         });
@@ -161,7 +194,17 @@ public class View {
                 View.listModel.updateAA(wordList);
                 View.scrollpane.revalidate();
                 View.scrollpane.repaint();
+
+                b2.setSelected(true);
+                b2.setText("ESP_1 (SELECTED)");
+    
+                b1.setSelected(false);
+                b1.setText("ESP_2");
                 
+                b3.setSelected(false);  
+                b3.setText("ESP_3");
+                
+                View.clickedId = 2;
             }
         });
         //esp 3
@@ -177,9 +220,67 @@ public class View {
                 View.listModel.updateAA(wordList);
                 View.scrollpane.revalidate();
                 View.scrollpane.repaint();
+
+                b3.setSelected(true);
+                b3.setText("ESP_1 (SELECTED)");
+    
+                b2.setSelected(false);
+                b2.setText("ESP_2");
+                
+                b1.setSelected(false);  
+                b1.setText("ESP_3");
+
+                View.clickedId = 3;
             }
         });
 
+        b4.addActionListener((ActionListener) new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               
+                if(View.clickedId == 1){
+                    System.out.println("Uppdaterar ESP_1");
+                        mT.setText("Mean Temprature: " + Main.db.getMeanTemp(1));
+                        mH.setText("Mean Humidity: " + String.valueOf(esp1.getMeanHumidity(910, 23)));
+                        mG.setText("Mean Gas: " + String.valueOf(esp1.getMeanGas(23, 2)));
+
+                        Map<String, Integer> dataSet = Main.db.resultSetToMap(Main.db.getMeasureValue(1, 1));
+                        List<Map.Entry<String, Integer>> wordList = new ArrayList<Map.Entry<String, Integer>>(dataSet.entrySet());
+                        View.listModel.updateAA(wordList);
+                        View.scrollpane.revalidate();
+                        View.scrollpane.repaint();
+                }
+            
+                if(View.clickedId == 2){
+                    System.out.println("Uppdaterar ESP_2");
+                        mT.setText("Mean Temprature: " + String.valueOf(esp2.getMeanTemp(3423, 10)));
+                        mH.setText("Mean Humidity: " + String.valueOf(esp2.getMeanHumidity(920, 23)));
+                        mG.setText("Mean Gas: " + String.valueOf(esp2.getMeanGas(43, 2)));
+    
+                        Map<String, Integer> dataSet = Main.db.resultSetToMap(Main.db.getMeasureValue(2, 2));
+                        List<Map.Entry<String, Integer>> wordList = new ArrayList<Map.Entry<String, Integer>>(dataSet.entrySet());
+                        View.listModel.updateAA(wordList);
+                        View.scrollpane.revalidate();
+                        View.scrollpane.repaint();
+                }
+
+                if(View.clickedId == 3){
+                    System.out.println("Uppdaterar ESP_3");
+                        mT.setText("Mean Temprature: " + String.valueOf(esp3.getMeanTemp(342, 10)));
+                        mH.setText("Mean Humidity: " + String.valueOf(esp3.getMeanHumidity(9210, 23)));
+                        mG.setText("Mean Gas: " + String.valueOf(esp3.getMeanGas(213, 2)));
+                
+                        Map<String, Integer> dataSet = Main.db.resultSetToMap(Main.db.getMeasureValue(3, 3));
+                        List<Map.Entry<String, Integer>> wordList = new ArrayList<Map.Entry<String, Integer>>(dataSet.entrySet());
+                        View.listModel.updateAA(wordList);
+                        View.scrollpane.revalidate();
+                        View.scrollpane.repaint();
+                }
+
+                
+                
+            }
+        });
 
     }
 }
