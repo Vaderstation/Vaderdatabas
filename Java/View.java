@@ -240,7 +240,7 @@ public class View {
                
                 if(View.clickedId == 1){
                     System.out.println("Uppdaterar ESP_1");
-                        mT.setText("Mean Temprature: " + Main.db.getMeanTemp(1));
+                        mT.setText("Mean Temprature: " + Main.db.resultSetToDouble(Main.db.getMeanTemp(1)));
                         mH.setText("Mean Humidity: " + String.valueOf(esp1.getMeanHumidity(910, 23)));
                         mG.setText("Mean Gas: " + String.valueOf(esp1.getMeanGas(23, 2)));
 

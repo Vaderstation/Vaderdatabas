@@ -143,7 +143,7 @@ public class Database {
 			return resultSet;
 		}
 		//KOLLA ÖVER DESSA METODER!!!
-		public double getMeanTemp(int ESP_ID) {
+		public ResultSet getMeanTemp(int ESP_ID) {
 			ResultSet resultSet = null;
 			String query = "SELECT AVG(MeasureValue) FROM Measure,Sensor,Card WHERE Sensor.ESP_ID = Card.ESP_ID AND Sensor.ESP_ID = 1 AND Measure.Sensor_ID=Sensor.sensor_ID AND Measure.Sensor_ID = 1 ORDER BY MeasureTime DESC LIMIT 5; ";
 			PreparedStatement statement = null;
@@ -155,18 +155,12 @@ public class Database {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-			
-			try {
-				return (double) resultSet.getInt(0);
-			} catch (SQLException e) {
-				e.printStackTrace();
-				return 0;
-			}
+			return resultSet;
 		}
 
 		public ResultSet getMeanHumidity(int ESP_ID) {
 			ResultSet resultSet = null;
-			String query = "SELECT AVG(MeasureValue) FROM Measure,Sensor,Card WHERE Sensor.ESP_ID = Card.ESP_ID AND Sensor.ESP_ID = ? AND Measure.Sensor_ID=Sensor.sensor_ID AND Measure.Sensor_ID = ? ORDER BY MeasureTime DESC LIMIT 5 ";
+			String query = "SELECT AVG(MeasureValue) FROM Measure ORDER BY MeasureTime DESC LIMIT 5; ";
 			PreparedStatement statement = null;
 			try {
 				statement = conn.prepareStatement(query);
@@ -181,7 +175,7 @@ public class Database {
 		
 		public ResultSet getMeanGas(int ESP_ID) {
 			ResultSet resultSet = null;
-			String query = "SELECT AVG(MeasureValue) FROM Measure,Sensor,Card WHERE Sensor.ESP_ID = Card.ESP_ID AND Sensor.ESP_ID = ? AND Measure.Sensor_ID=Sensor.sensor_ID AND Measure.Sensor_ID = ? ORDER BY MeasureTime DESC LIMIT 5 ";
+			String query = "SELECT AVG(MeasureValue) FROM Measure,Sensor,Card WHERE Sensor.ESP_ID = Card.ESP_ID AND Sensor.ESP_ID = ? AND Measure.Sensor_ID=Sensor.sensor_ID AND Measure.Sensor_ID = ? ORDER BY MeasureTime DESC LIMIT 5; ";
 			PreparedStatement statement = null;
 			try {
 				statement = conn.prepareStatement(query);
@@ -192,6 +186,17 @@ public class Database {
 				e.printStackTrace();
 			}
 			return resultSet;
+		}
+
+		public double resultSetToDouble (ResultSet rs){
+			double dataSet = 0;
+			try {
+					dataSet = rs.getDouble(1);
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return dataSet;
 		}
 		
 }
