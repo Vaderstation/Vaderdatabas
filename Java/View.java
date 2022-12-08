@@ -106,6 +106,7 @@ public class View {
         b4 = new JButton("Update");
         b4.setPreferredSize(new Dimension(220, 100));
         
+        
         panel2.add(b1);
         panel2.add(b2);
         panel2.add(b3);
@@ -117,11 +118,6 @@ public class View {
         t1.setPreferredSize(new Dimension(400,120));
         t1.setFont(new Font("Verdana", Font.PLAIN, 32));
         panel1.add(t1, BorderLayout.CENTER);
-
-        //Medelvärden
-        Measure esp1 = new Measure();
-        Measure esp2 = new Measure();
-        Measure esp3 = new Measure();
 
         //esp measurements setup and label for panel 3
                  mT = new JLabel("Null");
@@ -185,9 +181,9 @@ public class View {
         b2.addActionListener((ActionListener) new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                mT.setText("Mean Temprature: " + Main.db.resultSetToDouble(Main.db.getMeanTemp(1)));
-                mH.setText("Mean Humidity: " + Main.db.resultSetToDouble(Main.db.getMeanHumidity(1)));
-                mG.setText("Mean Gas: " + Main.db.resultSetToDouble(Main.db.getMeanGas(1)));
+                mT.setText("Mean Temprature: " + Main.db.resultSetToDouble(Main.db.getMeanTemp(2)));
+                mH.setText("Mean Humidity: " + Main.db.resultSetToDouble(Main.db.getMeanHumidity(2)));
+                mG.setText("Mean Gas: " + Main.db.resultSetToDouble(Main.db.getMeanGas(2)));
 
                 Map<String, Integer> dataSet = Main.db.resultSetToMap(Main.db.getMeasureValue(2, 2));
                 List<Map.Entry<String, Integer>> wordList = new ArrayList<Map.Entry<String, Integer>>(dataSet.entrySet());
@@ -211,9 +207,9 @@ public class View {
         b3.addActionListener((ActionListener) new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                mT.setText("Mean Temprature: " + Main.db.resultSetToDouble(Main.db.getMeanTemp(1)));
-                mH.setText("Mean Humidity: " + Main.db.resultSetToDouble(Main.db.getMeanHumidity(1)));
-                mG.setText("Mean Gas: " + Main.db.resultSetToDouble(Main.db.getMeanGas(1)));
+                mT.setText("Mean Temprature: " + Main.db.resultSetToDouble(Main.db.getMeanTemp(3)));
+                mH.setText("Mean Humidity: " + Main.db.resultSetToDouble(Main.db.getMeanHumidity(3)));
+                mG.setText("Mean Gas: " + Main.db.resultSetToDouble(Main.db.getMeanGas(3)));
                 
                 Map<String, Integer> dataSet = Main.db.resultSetToMap(Main.db.getMeasureValue(3, 3));
                 List<Map.Entry<String, Integer>> wordList = new ArrayList<Map.Entry<String, Integer>>(dataSet.entrySet());
