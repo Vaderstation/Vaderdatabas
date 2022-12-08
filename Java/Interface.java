@@ -42,7 +42,6 @@ public class Interface {
 
         b1 = new JButton("ESP_1");
         b1.setPreferredSize(new Dimension(200, 100));
-       
 
         b2 = new JButton("ESP_2");
         b2.setPreferredSize(new Dimension(200, 100));
