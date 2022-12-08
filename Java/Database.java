@@ -12,10 +12,15 @@ import java.util.TreeMap;
 //import com.mysql.cj.protocol.Resultset;
 
 public class Database {
+	
     private static final String jdbcUsername = "hbg13";
 	private static final String jdbcPassword = "pjd666zk";	
 	private static final String jdbcString = "jdbc:mysql://puccini.cs.lth.se/hbg13";
-	
+	/* 
+	private static final String jdbcUsername = "dbgui";
+	private static final String jdbcPassword = "root_password";	
+	private static final String jdbcString = "jbdc:mysql://192.168.137.1/test";
+	*/
 	private Connection conn = null;
 
 	public void connect() {
@@ -161,7 +166,7 @@ public class Database {
 
 		public ResultSet getMeanHumidity(int ESP_ID) {
 			ResultSet resultSet = null;
-			String query = "SELECT AVG(MeasureValue) FROM Measure ORDER BY MeasureTime DESC LIMIT 5; ";
+			String query = "SELECT AVG(MeasureValue) FROM Measure,Sensor,Card WHERE Sensor.ESP_ID = Card.ESP_ID AND Sensor.ESP_ID = ? AND Measure.Sensor_ID=Sensor.sensor_ID AND Measure.Sensor_ID = ? ORDER BY MeasureTime DESC LIMIT 5; ";
 			PreparedStatement statement = null;
 			try {
 				statement = conn.prepareStatement(query);

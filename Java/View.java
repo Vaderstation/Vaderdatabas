@@ -29,22 +29,11 @@ public class View {
     private static JLabel mH;
     private static JLabel mG;
 
-    private static double esp1MT;
-    private static double esp2MT;
-    private static double esp3MT;
-
-    private static double esp1MH;
-    private static double esp2MH;
-    private static double esp3MH;
-
-    private static double esp1MG;
-    private static double esp2MG;
-    private static double esp3MG;
-
     private static int clickedId;
 
     private static SortedListModel<Map.Entry<String, Integer>> listModel;
     private static JScrollPane scrollpane;
+
     public View(Map map){
         SwingUtilities.invokeLater(() -> createWindow(map));
     }
@@ -122,8 +111,8 @@ public class View {
         //esp measurements setup and label for panel 3
                  mT = new JLabel("Null");
                  mH = new JLabel("Null");
-                 mG = new JLabel("null");
-                 JLabel lV = new JLabel("Live values: ");
+                 mG = new JLabel("Null");
+                 JLabel lV = new JLabel("Listed Values: ");
 
                 mT.setPreferredSize(new Dimension(420,100));
                 mH.setPreferredSize(new Dimension(420,100));
@@ -135,6 +124,7 @@ public class View {
                 mG.setFont(new Font("Verdana", Font.PLAIN, 18));
                 lV.setFont(new Font("Verdana", Font.PLAIN, 24));
 
+
                 panel5.add(mT);
                 panel5.add(mH);
                 panel5.add(mG);
@@ -142,11 +132,15 @@ public class View {
 
         //Live values setup
 
-        View.scrollpane.setPreferredSize(new Dimension(420,100));
-        View.scrollpane.setMinimumSize(new Dimension(420,100));
-        View.scrollpane.setMaximumSize(new Dimension(420,100));
+        View.scrollpane.setPreferredSize(new Dimension(420,300));
+        View.scrollpane.setMinimumSize(new Dimension(420,300));
+        View.scrollpane.setMaximumSize(new Dimension(420,300));
         panel3.add(View.scrollpane);
+        
 
+        //checkIfOk
+
+        Measure m = new Measure(); 
         //update
 
         //esp1
@@ -157,11 +151,35 @@ public class View {
                 mH.setText("Mean Humidity: " + Main.db.resultSetToDouble(Main.db.getMeanHumidity(1)));
                 mG.setText("Mean Gas: " + Main.db.resultSetToDouble(Main.db.getMeanGas(1)));
 
+                if(m.checkTemp(Main.db.resultSetToDouble(Main.db.getMeanTemp(1))) == 1){
+                    mT.setForeground(Color.RED);
+                }else{
+                    mT.setForeground(Color.black);
+                }
+
+                if(m.checkHumidity(Main.db.resultSetToDouble(Main.db.getMeanHumidity(1))) == 1){
+                    mH.setForeground(Color.RED);
+                }else{
+                    mH.setForeground(Color.black);
+                }
+
+                if(m.checkHumidity(Main.db.resultSetToDouble(Main.db.getMeanGas(1))) == 1){
+                    mG.setForeground(Color.RED);
+                }else{
+                    mG.setForeground(Color.black);
+                }
+
+
+
                 Map<String, Integer> dataSet = Main.db.resultSetToMap(Main.db.getMeasureValue(1, 1));
                 List<Map.Entry<String, Integer>> wordList = new ArrayList<Map.Entry<String, Integer>>(dataSet.entrySet());
                 View.listModel.updateAA(wordList);
+                panel3.remove(View.scrollpane);
+                panel3.updateUI();
                 View.scrollpane.revalidate();
                 View.scrollpane.repaint();
+                panel3.add(View.scrollpane);
+                panel3.updateUI();
 
                 b1.setSelected(true);
                 b1.setText("ESP_1 (SELECTED)");
@@ -185,17 +203,39 @@ public class View {
                 mH.setText("Mean Humidity: " + Main.db.resultSetToDouble(Main.db.getMeanHumidity(2)));
                 mG.setText("Mean Gas: " + Main.db.resultSetToDouble(Main.db.getMeanGas(2)));
 
+                if(m.checkTemp(Main.db.resultSetToDouble(Main.db.getMeanTemp(2))) == 1){
+                    mT.setForeground(Color.RED);
+                }else{
+                    mT.setForeground(Color.black);
+                }
+
+                if(m.checkHumidity(Main.db.resultSetToDouble(Main.db.getMeanHumidity(2))) == 1){
+                    mH.setForeground(Color.RED);
+                }else{
+                    mH.setForeground(Color.black);
+                }
+
+                if(m.checkHumidity(Main.db.resultSetToDouble(Main.db.getMeanGas(2))) == 1){
+                    mG.setForeground(Color.RED);
+                }else{
+                    mG.setForeground(Color.black);
+                }
+
                 Map<String, Integer> dataSet = Main.db.resultSetToMap(Main.db.getMeasureValue(2, 2));
                 List<Map.Entry<String, Integer>> wordList = new ArrayList<Map.Entry<String, Integer>>(dataSet.entrySet());
                 View.listModel.updateAA(wordList);
+                panel3.remove(View.scrollpane);
+                panel3.updateUI();
                 View.scrollpane.revalidate();
                 View.scrollpane.repaint();
+                panel3.add(View.scrollpane);
+                panel3.updateUI();
 
                 b2.setSelected(true);
-                b2.setText("ESP_1 (SELECTED)");
+                b2.setText("ESP_2 (SELECTED)");
     
                 b1.setSelected(false);
-                b1.setText("ESP_2");
+                b1.setText("ESP_1");
                 
                 b3.setSelected(false);  
                 b3.setText("ESP_3");
@@ -210,21 +250,43 @@ public class View {
                 mT.setText("Mean Temprature: " + Main.db.resultSetToDouble(Main.db.getMeanTemp(3)));
                 mH.setText("Mean Humidity: " + Main.db.resultSetToDouble(Main.db.getMeanHumidity(3)));
                 mG.setText("Mean Gas: " + Main.db.resultSetToDouble(Main.db.getMeanGas(3)));
+
+                if(m.checkTemp(Main.db.resultSetToDouble(Main.db.getMeanTemp(3))) == 1){
+                    mT.setForeground(Color.RED);
+                }else{
+                    mT.setForeground(Color.black);
+                }
+
+                if(m.checkHumidity(Main.db.resultSetToDouble(Main.db.getMeanHumidity(3))) == 1){
+                    mH.setForeground(Color.RED);
+                }else{
+                    mH.setForeground(Color.black);
+                }
+
+                if(m.checkHumidity(Main.db.resultSetToDouble(Main.db.getMeanGas(3))) == 1){
+                    mG.setForeground(Color.RED);
+                }else{
+                    mG.setForeground(Color.black);
+                }
                 
                 Map<String, Integer> dataSet = Main.db.resultSetToMap(Main.db.getMeasureValue(3, 3));
                 List<Map.Entry<String, Integer>> wordList = new ArrayList<Map.Entry<String, Integer>>(dataSet.entrySet());
                 View.listModel.updateAA(wordList);
+                panel3.remove(View.scrollpane);
+                panel3.updateUI();
                 View.scrollpane.revalidate();
                 View.scrollpane.repaint();
+                panel3.add(View.scrollpane);
+                panel3.updateUI();
 
                 b3.setSelected(true);
-                b3.setText("ESP_1 (SELECTED)");
+                b3.setText("ESP_3 (SELECTED)");
     
                 b2.setSelected(false);
                 b2.setText("ESP_2");
                 
                 b1.setSelected(false);  
-                b1.setText("ESP_3");
+                b1.setText("ESP_1");
 
                 View.clickedId = 3;
             }
@@ -240,11 +302,33 @@ public class View {
                         mH.setText("Mean Humidity: " + Main.db.resultSetToDouble(Main.db.getMeanHumidity(1)));
                         mG.setText("Mean Gas: " + Main.db.resultSetToDouble(Main.db.getMeanGas(1)));
 
+                        if(m.checkTemp(Main.db.resultSetToDouble(Main.db.getMeanTemp(1))) == 1){
+                            mT.setForeground(Color.RED);
+                        }else{
+                            mT.setForeground(Color.black);
+                        }
+        
+                        if(m.checkHumidity(Main.db.resultSetToDouble(Main.db.getMeanHumidity(1))) == 1){
+                            mH.setForeground(Color.RED);
+                        }else{
+                            mH.setForeground(Color.black);
+                        }
+        
+                        if(m.checkHumidity(Main.db.resultSetToDouble(Main.db.getMeanGas(1))) == 1){
+                            mG.setForeground(Color.RED);
+                        }else{
+                            mG.setForeground(Color.black);
+                        }
+
                         Map<String, Integer> dataSet = Main.db.resultSetToMap(Main.db.getMeasureValue(1, 1));
                         List<Map.Entry<String, Integer>> wordList = new ArrayList<Map.Entry<String, Integer>>(dataSet.entrySet());
                         View.listModel.updateAA(wordList);
+                        panel3.remove(View.scrollpane);
+                        panel3.updateUI();
                         View.scrollpane.revalidate();
                         View.scrollpane.repaint();
+                        panel3.add(View.scrollpane);
+                        panel3.updateUI();
                 }
             
                 if(View.clickedId == 2){
@@ -252,12 +336,35 @@ public class View {
                         mT.setText("Mean Temprature: " + Main.db.resultSetToDouble(Main.db.getMeanTemp(2)));
                         mH.setText("Mean Humidity: " + Main.db.resultSetToDouble(Main.db.getMeanHumidity(2)));
                         mG.setText("Mean Gas: " + Main.db.resultSetToDouble(Main.db.getMeanGas(2)));
+
+                        if(m.checkTemp(Main.db.resultSetToDouble(Main.db.getMeanTemp(2))) == 1){
+                            mT.setForeground(Color.RED);
+                        }else{
+                            mT.setForeground(Color.black);
+                        }
+        
+                        if(m.checkHumidity(Main.db.resultSetToDouble(Main.db.getMeanHumidity(2))) == 1){
+                            mH.setForeground(Color.RED);
+                        }else{
+                            mH.setForeground(Color.black);
+                        }
+        
+                        if(m.checkHumidity(Main.db.resultSetToDouble(Main.db.getMeanGas(2))) == 1){
+                            mG.setForeground(Color.RED);
+                        }else{
+                            mG.setForeground(Color.black);
+                        }
     
                         Map<String, Integer> dataSet = Main.db.resultSetToMap(Main.db.getMeasureValue(2, 2));
                         List<Map.Entry<String, Integer>> wordList = new ArrayList<Map.Entry<String, Integer>>(dataSet.entrySet());
                         View.listModel.updateAA(wordList);
+                        panel3.remove(View.scrollpane);
+                        panel3.updateUI();
                         View.scrollpane.revalidate();
                         View.scrollpane.repaint();
+                        panel3.add(View.scrollpane);
+                        panel3.updateUI();
+                        
                 }
 
                 if(View.clickedId == 3){
@@ -265,12 +372,34 @@ public class View {
                         mT.setText("Mean Temprature: " + Main.db.resultSetToDouble(Main.db.getMeanTemp(3)));
                         mH.setText("Mean Humidity: " + Main.db.resultSetToDouble(Main.db.getMeanHumidity(3)));
                         mG.setText("Mean Gas: " + Main.db.resultSetToDouble(Main.db.getMeanGas(3)));
+
+                        if(m.checkTemp(Main.db.resultSetToDouble(Main.db.getMeanTemp(3))) == 1){
+                            mT.setForeground(Color.RED);
+                        }else{
+                            mT.setForeground(Color.black);
+                        }
+        
+                        if(m.checkHumidity(Main.db.resultSetToDouble(Main.db.getMeanHumidity(3))) == 1){
+                            mH.setForeground(Color.RED);
+                        }else{
+                            mH.setForeground(Color.black);
+                        }
+        
+                        if(m.checkHumidity(Main.db.resultSetToDouble(Main.db.getMeanGas(3))) == 1){
+                            mG.setForeground(Color.RED);
+                        }else{
+                            mG.setForeground(Color.black);
+                        }
                 
                         Map<String, Integer> dataSet = Main.db.resultSetToMap(Main.db.getMeasureValue(3, 3));
                         List<Map.Entry<String, Integer>> wordList = new ArrayList<Map.Entry<String, Integer>>(dataSet.entrySet());
                         View.listModel.updateAA(wordList);
+                        panel3.remove(View.scrollpane);
+                        panel3.updateUI();
                         View.scrollpane.revalidate();
                         View.scrollpane.repaint();
+                        panel3.add(View.scrollpane);
+                        panel3.updateUI();
                 }
 
                 

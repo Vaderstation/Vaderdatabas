@@ -21,7 +21,7 @@ public class SortedListModel<E> extends AbstractListModel<E> {
 	public int getSize() {
 		return list.size();
 	}
-
+	
 	@Override
 	public E getElementAt(int index) {
 		return list.get(index);

@@ -26,4 +26,41 @@ public class Measure {
         return mean; 
     } 
 
+    public int checkTemp(double temp){
+        if((temp>30 || temp<20) && temp != 0.0){
+            return 1;
+        }
+        
+        if(temp == 0.0){
+            return 0;
+        }
+        else{
+            return 0;
+        }
+    }
+
+    public int checkHumidity(double Humidity){
+        if(Humidity>55){
+            return 1;
+        }
+        if(Humidity == 0.0){
+            return 0;
+        }
+        else{
+            return 0; 
+        }
+    }
+
+    public int checkGas(double gas){
+        if(gas>1000){
+            return 1; 
+        }
+        if(gas == 0.0){
+            return 0; 
+        }
+        else{
+            return 0; 
+        }
+    }
+
 }
