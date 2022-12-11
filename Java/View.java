@@ -147,9 +147,9 @@ public class View {
         b1.addActionListener((ActionListener) new ActionListener(){ //SÄTT IN VÄRDEN FRÅN DATABAS. 
             @Override
             public void actionPerformed(ActionEvent e) {
-                mT.setText("Mean Temprature: " + Main.db.resultSetToDouble(Main.db.getMeanTemp(1)));
-                mH.setText("Mean Humidity: " + Main.db.resultSetToDouble(Main.db.getMeanHumidity(1)));
-                mG.setText("Mean Gas: " + Main.db.resultSetToDouble(Main.db.getMeanGas(1)));
+                mT.setText("Mean Temprature: " + Main.db.resultSetToDouble(Main.db.getMeanTemp(1)) + " °C");
+                mH.setText("Mean Humidity: " + Main.db.resultSetToDouble(Main.db.getMeanHumidity(1)) + " %");
+                mG.setText("Mean Gas: " + Main.db.resultSetToDouble(Main.db.getMeanGas(1)) + " ppm CO2");
 
                 if(m.checkTemp(Main.db.resultSetToDouble(Main.db.getMeanTemp(1))) == 1){
                     mT.setForeground(Color.RED);
