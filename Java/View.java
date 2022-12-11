@@ -199,9 +199,9 @@ public class View {
         b2.addActionListener((ActionListener) new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                mT.setText("Mean Temprature: " + Main.db.resultSetToDouble(Main.db.getMeanTemp(2)));
-                mH.setText("Mean Humidity: " + Main.db.resultSetToDouble(Main.db.getMeanHumidity(2)));
-                mG.setText("Mean Gas: " + Main.db.resultSetToDouble(Main.db.getMeanGas(2)));
+                mT.setText("Mean Temprature: " + Main.db.resultSetToDouble(Main.db.getMeanTemp(2)) + " °C");
+                mH.setText("Mean Humidity: " + Main.db.resultSetToDouble(Main.db.getMeanHumidity(2)) + " %");
+                mG.setText("Mean Gas: " + Main.db.resultSetToDouble(Main.db.getMeanGas(2)) + " ppm CO2");
 
                 if(m.checkTemp(Main.db.resultSetToDouble(Main.db.getMeanTemp(2))) == 1){
                     mT.setForeground(Color.RED);
@@ -247,9 +247,9 @@ public class View {
         b3.addActionListener((ActionListener) new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                mT.setText("Mean Temprature: " + Main.db.resultSetToDouble(Main.db.getMeanTemp(3)));
-                mH.setText("Mean Humidity: " + Main.db.resultSetToDouble(Main.db.getMeanHumidity(3)));
-                mG.setText("Mean Gas: " + Main.db.resultSetToDouble(Main.db.getMeanGas(3)));
+                mT.setText("Mean Temprature: " + Main.db.resultSetToDouble(Main.db.getMeanTemp(3)) + " °C");
+                mH.setText("Mean Humidity: " + Main.db.resultSetToDouble(Main.db.getMeanHumidity(3)) + " %");
+                mG.setText("Mean Gas: " + Main.db.resultSetToDouble(Main.db.getMeanGas(3)) + " ppm CO2");
 
                 if(m.checkTemp(Main.db.resultSetToDouble(Main.db.getMeanTemp(3))) == 1){
                     mT.setForeground(Color.RED);
@@ -298,9 +298,9 @@ public class View {
                
                 if(View.clickedId == 1){
                     System.out.println("Uppdaterar ESP_1");
-                        mT.setText("Mean Temprature: " + Main.db.resultSetToDouble(Main.db.getMeanTemp(1)));
-                        mH.setText("Mean Humidity: " + Main.db.resultSetToDouble(Main.db.getMeanHumidity(1)));
-                        mG.setText("Mean Gas: " + Main.db.resultSetToDouble(Main.db.getMeanGas(1)));
+                    mT.setText("Mean Temprature: " + Main.db.resultSetToDouble(Main.db.getMeanTemp(1)) + " °C");
+                    mH.setText("Mean Humidity: " + Main.db.resultSetToDouble(Main.db.getMeanHumidity(1)) + " %");
+                    mG.setText("Mean Gas: " + Main.db.resultSetToDouble(Main.db.getMeanGas(1)) + " ppm CO2");
 
                         if(m.checkTemp(Main.db.resultSetToDouble(Main.db.getMeanTemp(1))) == 1){
                             mT.setForeground(Color.RED);
@@ -333,9 +333,9 @@ public class View {
             
                 if(View.clickedId == 2){
                     System.out.println("Uppdaterar ESP_2");
-                        mT.setText("Mean Temprature: " + Main.db.resultSetToDouble(Main.db.getMeanTemp(2)));
-                        mH.setText("Mean Humidity: " + Main.db.resultSetToDouble(Main.db.getMeanHumidity(2)));
-                        mG.setText("Mean Gas: " + Main.db.resultSetToDouble(Main.db.getMeanGas(2)));
+                    mT.setText("Mean Temprature: " + Main.db.resultSetToDouble(Main.db.getMeanTemp(2)) + " °C");
+                    mH.setText("Mean Humidity: " + Main.db.resultSetToDouble(Main.db.getMeanHumidity(2)) + " %");
+                    mG.setText("Mean Gas: " + Main.db.resultSetToDouble(Main.db.getMeanGas(2)) + " ppm CO2");
 
                         if(m.checkTemp(Main.db.resultSetToDouble(Main.db.getMeanTemp(2))) == 1){
                             mT.setForeground(Color.RED);
@@ -369,9 +369,9 @@ public class View {
 
                 if(View.clickedId == 3){
                     System.out.println("Uppdaterar ESP_3");
-                        mT.setText("Mean Temprature: " + Main.db.resultSetToDouble(Main.db.getMeanTemp(3)));
-                        mH.setText("Mean Humidity: " + Main.db.resultSetToDouble(Main.db.getMeanHumidity(3)));
-                        mG.setText("Mean Gas: " + Main.db.resultSetToDouble(Main.db.getMeanGas(3)));
+                    mT.setText("Mean Temprature: " + Main.db.resultSetToDouble(Main.db.getMeanTemp(3)) + " °C");
+                    mH.setText("Mean Humidity: " + Main.db.resultSetToDouble(Main.db.getMeanHumidity(3)) + " %");
+                    mG.setText("Mean Gas: " + Main.db.resultSetToDouble(Main.db.getMeanGas(3)) + " ppm CO2");
 
                         if(m.checkTemp(Main.db.resultSetToDouble(Main.db.getMeanTemp(3))) == 1){
                             mT.setForeground(Color.RED);
