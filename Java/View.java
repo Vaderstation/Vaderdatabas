@@ -42,6 +42,7 @@ public class View {
         Map<String, Integer> dataSet = Main.db.resultSetToMap(Main.db.getMeasureValue(1, 1));
         List<Map.Entry<String, Integer>> wordList = new ArrayList<Map.Entry<String, Integer>>(dataSet.entrySet());
         listModel = new SortedListModel<Map.Entry<String, Integer>>(wordList);
+        listModel.sort((s1, s2) -> s2.getKey().compareTo(s1.getKey()));
         JList<Map.Entry<String, Integer>> jlist = new JList<Map.Entry<String, Integer>>(listModel);
         View.scrollpane = new JScrollPane(jlist);
 
@@ -174,6 +175,7 @@ public class View {
                 Map<String, Integer> dataSet = Main.db.resultSetToMap(Main.db.getMeasureValue(1, 1));
                 List<Map.Entry<String, Integer>> wordList = new ArrayList<Map.Entry<String, Integer>>(dataSet.entrySet());
                 View.listModel.updateAA(wordList);
+                View.listModel.sort((s1, s2) -> s2.getKey().compareTo(s1.getKey()));
                 panel3.remove(View.scrollpane);
                 panel3.updateUI();
                 View.scrollpane.revalidate();
@@ -224,6 +226,7 @@ public class View {
                 Map<String, Integer> dataSet = Main.db.resultSetToMap(Main.db.getMeasureValue(2, 2));
                 List<Map.Entry<String, Integer>> wordList = new ArrayList<Map.Entry<String, Integer>>(dataSet.entrySet());
                 View.listModel.updateAA(wordList);
+                View.listModel.sort((s1, s2) -> s2.getKey().compareTo(s1.getKey()));
                 panel3.remove(View.scrollpane);
                 panel3.updateUI();
                 View.scrollpane.revalidate();
@@ -272,6 +275,7 @@ public class View {
                 Map<String, Integer> dataSet = Main.db.resultSetToMap(Main.db.getMeasureValue(3, 3));
                 List<Map.Entry<String, Integer>> wordList = new ArrayList<Map.Entry<String, Integer>>(dataSet.entrySet());
                 View.listModel.updateAA(wordList);
+                View.listModel.sort((s1, s2) -> s2.getKey().compareTo(s1.getKey()));
                 panel3.remove(View.scrollpane);
                 panel3.updateUI();
                 View.scrollpane.revalidate();
@@ -323,6 +327,7 @@ public class View {
                         Map<String, Integer> dataSet = Main.db.resultSetToMap(Main.db.getMeasureValue(1, 1));
                         List<Map.Entry<String, Integer>> wordList = new ArrayList<Map.Entry<String, Integer>>(dataSet.entrySet());
                         View.listModel.updateAA(wordList);
+                        View.listModel.sort((s1, s2) -> s2.getKey().compareTo(s1.getKey()));
                         panel3.remove(View.scrollpane);
                         panel3.updateUI();
                         View.scrollpane.revalidate();
@@ -358,6 +363,7 @@ public class View {
                         Map<String, Integer> dataSet = Main.db.resultSetToMap(Main.db.getMeasureValue(2, 2));
                         List<Map.Entry<String, Integer>> wordList = new ArrayList<Map.Entry<String, Integer>>(dataSet.entrySet());
                         View.listModel.updateAA(wordList);
+                        View.listModel.sort((s1, s2) -> s2.getKey().compareTo(s1.getKey()));
                         panel3.remove(View.scrollpane);
                         panel3.updateUI();
                         View.scrollpane.revalidate();
@@ -394,6 +400,7 @@ public class View {
                         Map<String, Integer> dataSet = Main.db.resultSetToMap(Main.db.getMeasureValue(3, 3));
                         List<Map.Entry<String, Integer>> wordList = new ArrayList<Map.Entry<String, Integer>>(dataSet.entrySet());
                         View.listModel.updateAA(wordList);
+                        View.listModel.sort((s1, s2) -> s2.getKey().compareTo(s1.getKey()));
                         panel3.remove(View.scrollpane);
                         panel3.updateUI();
                         View.scrollpane.revalidate();
